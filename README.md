@@ -9,7 +9,6 @@ This project now supports a **free single-deployment setup** on Vercel.
 ## Project Structure
 
 - `frontend` - Complete app (UI + API route)
-- `backend` - Legacy FastAPI backend (optional, no longer required for free Vercel deployment)
 
 ## Run Locally (Single App)
 
