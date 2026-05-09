@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useMemo, useState } from "react";
 
 type LanguageOption = {
@@ -124,19 +125,31 @@ export default function Home() {
   };
 
   return (
-    <main className="relative min-h-screen overflow-hidden bg-slate-950 px-4 py-10 text-slate-100">
-      <div className="pointer-events-none absolute -left-32 top-0 h-80 w-80 rounded-full bg-fuchsia-500/30 blur-3xl" />
+    <main className="relative min-h-screen overflow-hidden bg-slate-950 px-4 py-8 text-slate-100 sm:px-6 lg:px-8">
+      <div className="pointer-events-none absolute -left-32 top-0 h-72 w-72 rounded-full bg-fuchsia-500/30 blur-3xl" />
       <div className="pointer-events-none absolute -right-20 bottom-0 h-80 w-80 rounded-full bg-cyan-400/30 blur-3xl" />
 
-      <section className="relative mx-auto w-full max-w-6xl rounded-3xl border border-white/10 bg-white/10 p-6 shadow-2xl backdrop-blur-xl md:p-10">
-        <div className="mb-8 flex flex-wrap items-start justify-between gap-4">
-          <div>
-            <p className="mb-2 inline-block rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs tracking-wide text-cyan-200">
-              MULTILINGUAL TRANSLATOR
-            </p>
-            <h1 className="text-3xl font-bold md:text-4xl">Global Language Translator</h1>
+      <section className="relative mx-auto w-full max-w-6xl rounded-3xl border border-white/10 bg-white/10 p-6 shadow-2xl backdrop-blur-xl transition duration-300 md:p-10">
+        <div className="mb-8 flex flex-col gap-6 rounded-3xl border border-white/10 bg-black/10 p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
+            <Image
+              src="/lt_logo.png"
+              alt="Language Translator Logo"
+              width={72}
+              height={72}
+              priority
+              className="rounded-2xl"
+            />
+            <div>
+              <p className="mb-3 inline-block rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[0.65rem] uppercase tracking-[0.25em] text-cyan-200">
+                MULTILINGUAL TRANSLATOR
+              </p>
+              <h1 className="text-2xl font-bold leading-tight tracking-tight text-white sm:text-3xl md:text-4xl">
+                Global Language Translator
+              </h1>
+            </div>
           </div>
-          <div className="rounded-2xl border border-white/15 bg-black/20 px-4 py-3 text-sm text-slate-300">
+          <div className="rounded-2xl border border-white/15 bg-black/20 px-4 py-3 text-sm text-slate-300 backdrop-blur-sm">
             <p>Source Language: {sourceLanguage.toUpperCase()}</p>
             <p>Target Language: {targetLanguage.toUpperCase()}</p>
           </div>
@@ -220,20 +233,24 @@ export default function Home() {
           </p>
         ) : null}
 
-        <div className="mt-6 flex flex-wrap items-center gap-3">
+        <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <button
             type="button"
             onClick={handleTranslate}
             disabled={isLoading}
-            className="rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 px-6 py-3 font-semibold text-white shadow-lg shadow-cyan-900/30 transition hover:scale-[1.02] hover:from-cyan-400 hover:to-blue-500 disabled:cursor-not-allowed disabled:opacity-70"
+            className="w-full rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 px-6 py-3 text-center font-semibold text-white shadow-lg shadow-cyan-900/30 transition hover:scale-[1.02] hover:from-cyan-400 hover:to-blue-500 disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto"
           >
             {isLoading ? "Translating..." : "Translate"}
           </button>
-          <p className="text-sm text-slate-300">
+          <p className="text-sm text-slate-300 sm:max-w-xl">
             Tip: Use <span className="font-semibold text-cyan-200">Auto Detect</span> when source language is unknown.
           </p>
         </div>
       </section>
+
+      <footer className="mx-auto mt-8 w-full max-w-6xl rounded-3xl border border-white/10 bg-white/10 p-5 text-center text-sm text-slate-300 shadow-2xl backdrop-blur-xl transition duration-300 md:p-6">
+        © 2026 Global Language Translator | Developed by Talha | All Rights Reserved
+      </footer>
     </main>
   );
 }
