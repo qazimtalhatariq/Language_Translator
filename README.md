@@ -58,3 +58,48 @@ Request body example:
   "target_language": "ur"
 }
 ```
+
+## Proper Production Deployment (Recommended)
+
+Use:
+
+- **Frontend:** Vercel
+- **Backend:** Render
+
+This is the standard production setup for your current architecture.
+
+### A) Deploy Backend on Render
+
+1. Push this repository to GitHub.
+2. In Render, click **New +** -> **Blueprint** (or **Web Service**).
+3. Select this repository.
+4. If using Blueprint, Render can read `render.yaml` automatically.
+5. Set environment variable:
+   - `ALLOWED_ORIGINS=https://your-frontend-domain.vercel.app`
+   - For multiple domains, separate by commas.
+6. Deploy backend.
+7. Copy backend URL (example: `https://language-translator-backend.onrender.com`).
+
+### B) Deploy Frontend on Vercel
+
+1. In Vercel, click **Add New Project** and import this same GitHub repository.
+2. Set **Root Directory** to `frontend`.
+3. Add environment variable:
+   - `NEXT_PUBLIC_BACKEND_URL=https://your-backend-domain.onrender.com`
+4. Deploy.
+5. Copy frontend URL (example: `https://language-translator.vercel.app`).
+
+### C) Final CORS Step
+
+After frontend deploy is complete, update Render env var:
+
+- `ALLOWED_ORIGINS=https://your-frontend-domain.vercel.app`
+
+Then redeploy backend once.
+
+## Can this run as a single server on Vercel?
+
+Not with the current FastAPI `uvicorn` backend as a long-running server.
+
+- Current best setup: **2 services** (Vercel + Render)
+- Single Vercel app would require moving backend logic to serverless functions/API routes.
