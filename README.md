@@ -95,5 +95,4 @@ This is a final project for the **4th semester AI course**.
 
 ### Team Members
 - Muhammad Talha Tariq
-- Ali Haider Naseer
-- Hamza Ali Khan
+
