@@ -65,9 +65,6 @@ const LANGUAGE_OPTIONS: LanguageOption[] = [
   { code: "cy", label: "Welsh" },
 ];
 
-const API_BASE_URL =
-  process.env.NEXT_PUBLIC_BACKEND_URL ?? "http://localhost:8000";
-
 export default function Home() {
   const [inputText, setInputText] = useState("");
   const [translatedText, setTranslatedText] = useState("");
@@ -97,7 +94,7 @@ export default function Home() {
 
     setIsLoading(true);
     try {
-      const response = await fetch(`${API_BASE_URL}/translate`, {
+      const response = await fetch("/api/translate", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
