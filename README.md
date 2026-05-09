@@ -1,30 +1,73 @@
-# Language Translator Website
+# Global Language Translator
 
-This project now supports a **free single-deployment setup** on Vercel.
+![App Screenshot](frontend/public/image.png)
 
-- **Frontend:** Next.js + React + TypeScript + Tailwind CSS
-- **Backend API (inside frontend):** Next.js Route Handler (`/api/translate`)
-- **Translator engine:** `translate-google`
+A modern, responsive multilingual translator built with **Next.js**, **React**, **TypeScript**, and **Tailwind CSS**. This project is designed as a university final project for an AI course and provides a user-friendly interface to translate text between many languages using a backend API route inside the same Next.js app.
 
-## Project Structure
+## 🚀 Project Overview
 
-- `frontend` - Complete app (UI + API route)
+This application allows users to:
+- Enter source text and choose a language to translate from
+- Select a target language for translation
+- Swap languages easily
+- View translated output instantly
+- See source and target language status in the header
 
-## Run Locally (Single App)
+The translator uses the `translate-google` package to perform translations on the server side through a Next.js API route.
 
-1. Open terminal in `frontend`
-2. Install dependencies:
-   - `npm install`
-3. Start app:
-   - `npm run dev`
-4. Open:
-   - `http://localhost:3000`
+## 📁 Structure
 
-## API Endpoint (inside Next.js app)
+- `frontend/` — main application directory
+  - `src/app/` — Next.js app pages and layout
+  - `src/app/api/translate/route.ts` — translation API endpoint
+  - `public/` — static assets including `lt_logo.png` and `image.png`
 
-- `POST /api/translate`
+## 🛠️ Features
 
-Request body example:
+- Responsive layout for mobile, tablet, and desktop
+- Modern glassmorphism UI with translucent cards and gradients
+- In-app translation API route (`POST /api/translate`)
+- Language swap button with auto-detect support
+- Favicon and site logo integration
+- Footer with project attribution
+
+## 💻 Installation
+
+```bash
+cd frontend
+npm install
+```
+
+## ▶️ Run Locally
+
+```bash
+cd frontend
+npm run dev
+```
+
+Then open:
+
+```text
+http://localhost:3000
+```
+
+## 📦 Build for Production
+
+```bash
+cd frontend
+npm run build
+npm run start
+```
+
+## 🔧 API Usage
+
+The translation endpoint is available at:
+
+```text
+POST /api/translate
+```
+
+Example request payload:
 
 ```json
 {
@@ -34,16 +77,23 @@ Request body example:
 }
 ```
 
-## Free Deployment on Vercel (Recommended)
+## ☁️ Deployment
 
-1. Push repository to GitHub.
-2. Go to Vercel and import this repository.
-3. Set **Root Directory** to `frontend`.
-4. Click **Deploy**.
+This app can be deployed on Vercel, Netlify, or any hosting service that supports Next.js.
 
-No environment variables are required for this single-app version.
+For Vercel:
+1. Push the repository to GitHub.
+2. Import the repository into Vercel.
+3. Set the **Root Directory** to `frontend`.
+4. Deploy.
 
-## Notes
+No special environment variables are required for this setup.
 
-- This setup is best for zero-cost/student usage.
-- On free plans, first request can be slightly slower (cold start), which is normal.
+## 🎓 University Project
+
+This is a final project for the **4th semester AI course**.
+
+### Team Members
+- Muhammad Talha Tariq
+- Ali Haider Naseer
+- Hamza Ali Khan
